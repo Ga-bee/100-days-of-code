@@ -16,25 +16,28 @@ def check(user):
         print("You loose")
         return False
     elif dif_user > 0:
-        print("You're still on game")
+        
         return True
     
-play = input('Would you like to play Blackjack? y or n')
-while play == 'yes': 
+play = input('Would you like to play Blackjack? y or n\n')
+while play == 'y': 
     #começa o loop do jogo
-    user += random.choice(cards)
-    computer += random.choice(cards)
+    user.append( random.choice(cards))
+    computer.append(random.choice(cards))
     print(f'The first computer card is {computer[0]}')
     print(f'Your cards: {user}')
-
-    more_cards = input('Do you want another card? y or n').lower()
+    checking = check(user)
+    
+    
+    more_cards = input('Do you want another card? y or n\n').lower()
     if more_cards == 'y':
-        checking = check(user)
         if checking: 
             continue
-        else:
+        elif checking == False:
             print("DJ para o som")
             break
+      
+        
     elif more_cards == 'n':
         # se o usuario quiser parar de jogar
         
@@ -51,30 +54,40 @@ while play == 'yes':
             if dif_computer == 0:
                 print('Empate(pesquisar em ingles)')
             else:
+                print(f'Your cards: {user}')
+                print(f"Computer's cards: {computer}")
                 print('You win!')
                 break
         # passou de 21
         if dif_user < 0:
+            print(f'Your cards: {user}')
+            print(f"Computer's cards: {computer}")
             print("You loose")
             break
         
     
         elif dif_user > dif_computer:
+            print(f'Your cards: {user}')
+            print(f"Computer's cards: {computer}")
             print("You loose")
         elif dif_user < dif_computer:
             if sum_computer < 17:
-                computer += random.choice(cards)
+                computer.append( random.choice(cards))
                 if dif_user > (21-sum_computer):
+                    print(f'Your cards: {user}')
+                    print(f"Computer's cards: {computer}")
                     print("You loose")
                     break
                 else:
+                    print(f'Your cards: {user}')
+                    print(f"Computer's cards: {computer}")
                     print("You win")
 
         # empate
         elif dif_user == dif_computer:
             print("Draw")
-            computer += random.choice(cards)
-            user += random.choice(cards)
+            computer.append( random.choice(cards))
+            user.append( random.choice(cards))
             sum_user = sum(user)
             dif_user = 21 - sum_user
             sum_computer = sum(computer)
@@ -82,23 +95,35 @@ while play == 'yes':
             if dif_user == 0:
             # mesa tbm faz 21
                 if dif_computer == 0:
+                    print(f'Your cards: {user}')
+                    print(f"Computer's cards: {computer}")
                     print('Empate(pesquisar em ingles)')
                 else:
+                    print(f'Your cards: {user}')
+                    print(f"Computer's cards: {computer}")
                     print('You win!')
                     break
             # passou de 21
             if dif_user < 0:
+                print(f'Your cards: {user}')
+                print(f"Computer's cards: {computer}")
                 print("You loose")
                 break
             elif dif_user > dif_computer:
+                print(f'Your cards: {user}')
+                print(f"Computer's cards: {computer}")
                 print("You loose")
             elif dif_user < dif_computer:
                 if sum_computer < 17:
-                    computer += random.choice(cards)
+                    computer.append( random.choice(cards))
                     if dif_user > (21-sum_computer):
+                        print(f'Your cards: {user}')
+                        print(f"Computer's cards: {computer}")
                         print("You loose")
                         break
                     else:
+                        print(f'Your cards: {user}')
+                        print(f"Computer's cards: {computer}")
                         print("You win") 
 
 

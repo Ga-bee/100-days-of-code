@@ -10,7 +10,7 @@ _  /|  / / /_/ /_  / / / / /  /_/ /  __/  /       _  /_/ // /_/ //  __/(__  )_(_
     print("Welcome to the number guessing game!\nI'm thinking of a number between 1 and 100.")
     level = input("Choose a difficulty. Type 'easy' or 'hard': ")
     return level
-computers_choice = random.randint(0,101)
+computers_choice = random.randint(0,100)
 level = menu()
 if level == 'hard':
         lifes = 5

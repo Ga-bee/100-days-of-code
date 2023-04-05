@@ -32,8 +32,10 @@ class Snake:
             self.segments.append(self.snake)
 
     def check_head_colision(self):
-        for self.segment in self.body:
-            if self.head.distance(self.body) < 15:
+        for self.segment in self.segments:
+            if self.segment == self.head:
+                pass
+            elif self.head.distance(self.segment) < 15:
                 game_over = Turtle()
                 game_over.penup()
                 game_over.setpos(-100,0)

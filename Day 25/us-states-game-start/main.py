@@ -30,13 +30,12 @@ while len(correct) <50:
     filtered = states[states["state"] == answer_state]
 
     if answer_state == "Exit":
-        missed = all_states.to_csv()
+        missed = [item for item in all_states if item not in correct]
         with open('Missed_states', mode = 'w' ) as w:
             w.write(missed)
         break
 
     if len(states[states["state"] == answer_state])> 0:
-        all_states.remove(answer_state)
         st = turtle.Turtle()
         st.penup()
         st.hideturtle()

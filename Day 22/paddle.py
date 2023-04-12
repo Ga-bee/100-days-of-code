@@ -5,6 +5,7 @@ class Paddle(Turtle):
         super().__init__()
         self.shape('square')
         self.color('white')
+        # self.setheading(90)
         self.shapesize(stretch_len=1, stretch_wid=5)
         self.penup()
         self.setpos(position)
@@ -20,6 +21,7 @@ class Paddle(Turtle):
         self.goto(self.xcor(),new_y)
         
 
-    def single_player(self):
+    def multiplayer(self):
+        
         pass
         

@@ -7,6 +7,8 @@ class Ball(Turtle):
         self.color('white')
         self.shape('circle')
         self.penup()
+
+        self.move_speed = 0.1
         
         self.x_move = 10
         self.y_move = 10
@@ -26,5 +28,9 @@ class Ball(Turtle):
     
     def reset(self):                 
         self.hideturtle()
-        self.setpos(0,0)
+        self.goto(0,0)
         self.showturtle()
+        self.x_move*= -1
+
+    def increase_speed(self):
+        self.move_speed *= 0.9

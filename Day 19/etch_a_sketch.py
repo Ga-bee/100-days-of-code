@@ -15,14 +15,14 @@ def clockwise():
     # new_heading = tim.heading() - 10
     # tim.setheading(new_heading)
     tim.right(20)
-    tim.forward(10)
+    # tim.forward(10)
 
 
 def counter_clockwise():
     # new_heading = tim.heading() + 10
     # tim.setheading(new_heading)
     tim.left(20)
-    tim.forward(10)
+    # tim.forward(10)
 
 def clear():    
     tim.setposition(0,0)

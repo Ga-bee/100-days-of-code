@@ -2,6 +2,7 @@ from turtle import Turtle, Screen
 from paddle import Paddle
 from ball import Ball
 from time import sleep
+from scoreboard import Score
 screen= Screen()
 screen.setup(width=800,height=600)
 screen.bgcolor('black')
@@ -9,7 +10,7 @@ screen.bgcolor('black')
 left_paddle = Paddle((-350,0))
 right_paddle = Paddle((350,0))
 ball = Ball()
-
+score = Score() 
 
 screen.listen()
 screen.onkeypress(right_paddle.move_up,"Up")
@@ -23,7 +24,7 @@ game_is_on = True
 l_score = 0
 r_score = 0
 while game_is_on:
-    sleep(0.1)
+    sleep(ball.move_speed)
     screen.update()
     ball.move()
     
@@ -31,25 +32,25 @@ while game_is_on:
     #Detect collision with the wall
     if ball.ycor() < -280 or ball.ycor() > 280:
         ball.bounce_y()
+        ball.increase_speed()
 
     #Detect collision with right paddle
-    if ball.distance(right_paddle) < 50 and ball.xcor() > 320 or ball.distance(left_paddle) < 50 and ball.xcor() < 320:
+    if (ball.distance(right_paddle) < 50 and ball.xcor() > 320 )or (ball.distance(left_paddle) < 50 and ball.xcor() < 320):
         ball.bounce_x()
+      
     
 
     if ball.xcor() <= -390:
-        l_score += 1
-
-    if ball.xcor() >= 390:
-        r_score += 1
-
+        score.left_point()
+        ball.move_speed = 0.1
         ball.reset()
 
-        # game_over =Turtle()
-        # game_over.hideturtle()
-        # game_over.color('white')
-        # game_over.write(arg='GAME OVER',align='center',font=('Comic Sans',24,'bold'))
-        # game_is_on = False
+    if ball.xcor() >= 390:
+        score.right_point()
+        ball.move_speed =0.1
+        ball.reset()
+
+        
     
 
 
@@ -57,3 +58,4 @@ while game_is_on:
 
 
 screen.exitonclick()
+

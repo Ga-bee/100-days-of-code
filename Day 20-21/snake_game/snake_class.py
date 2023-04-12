@@ -4,6 +4,7 @@ up = 90
 down = 270
 left = 180
 right = 0
+
 class Snake:
     def __init__(self) -> None:
         
@@ -31,40 +32,7 @@ class Snake:
             o_position -= 20
             self.segments.append(self.snake)
 
-    def check_head_colision(self):
-        for self.segment in self.segments:
-            if self.segment == self.head:
-                pass
-            elif self.head.distance(self.segment) < 15:
-                game_over = Turtle()
-                game_over.penup()
-                game_over.setpos(-100,0)
-                game_over.color("white")
-                game_over.write("GAME OVER",move=False,font=("Comic Sans", 24, "bold"))
-                return False
-        return True
-
        
-
-    def check_wall_colision(self):
-        if self.head.xcor() >= 290 or self.head.xcor() <= -290:
-            game_over = Turtle()
-            game_over.penup()
-            game_over.setpos(-100,0)
-            game_over.color("white")
-            game_over.write("GAME OVER",move=False,font=("Comic Sans", 24, "bold"))
-            return False
-        
-        if self.head.ycor() >= 290 or self.head.ycor() <= -290:
-            game_over = Turtle()
-            game_over.penup()
-            game_over.setpos(-100,0)
-            game_over.color("white")
-            game_over.write("GAME OVER",move=False,font=("Comic Sans", 24, "bold"))
-            return False
-
-        else:
-            return True
 
     def move(self):
         for num in range(len(self.segments)-1,0,-1):
@@ -92,10 +60,15 @@ class Snake:
         if self.head.heading() != left:
             self.head.seth(0)
         
+    def reset(self):
+        for seg in self.segments:
+            seg.goto(1000,1000)
+        self.segments.clear()
+        self.create_snake()
+        self.head =self.segments[0]
+        self.move()
         
 
-   
-screen = Screen()
 
     
     

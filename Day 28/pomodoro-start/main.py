@@ -1,5 +1,6 @@
 from tkinter import *
 import math
+import winsound
 # ---------------------------- CONSTANTS ------------------------------- #
 PINK = "#e2979c"
 RED = "#e7305b"
@@ -31,20 +32,24 @@ def start_timer():
         #time to work
         # count_down(WORK_MIN)
         count_down(5)
+        winsound.PlaySound("SystemExit", winsound.SND_ALIAS)
         timer_label.config(text='Work',fg=GREEN)
     else:
         if reps == 8:
             # count_down(LONG_BREAK_MIN)
             count_down(10)
+            winsound.PlaySound("SystemExit", winsound.SND_ALIAS)
             timer_label.config(text='Break',fg=RED)
         else:
             # count_down(SHORT_BREAK_MIN)
             count_down(3)
+            winsound.PlaySound("SystemExit", winsound.SND_ALIAS)
             timer_label.config(text='Break',fg=PINK)
         
 
 # ---------------------------- COUNTDOWN MECHANISM ------------------------------- # 
 def count_down(count):
+
     count_min = math.floor(count/60)
     count_sec = count % 60
     if count_sec < 10:
@@ -62,6 +67,7 @@ def count_down(count):
                 mark += '✔️'
 
                 check_label.config(text=mark)
+                # winsound.PlaySound("SystemExit", winsound.SND_ALIAS)
         start_timer()
 
 

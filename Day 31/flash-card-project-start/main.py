@@ -6,14 +6,31 @@ import time
 chosen = {}
 BACKGROUND_COLOR = "#B1DDC6"
 
-##--------------------- Generate words -----------------------
-file = pd.read_csv('./data/french_words.csv')
-file_dict = file.to_dict(orient="records")
+try:
+    data = pd.read_csv('./data/words_to_learn.csv')
+except FileNotFoundError:
+    file = pd.read_csv('./data/french_words.csv')
+    to_learn = file.to_dict(orient='records')
+else:
+    to_learn = data.to_dict(orient="records")
 # print(file_file)
+
+
+##----------------------remove right words------------------
+
+def is_known():
+    to_learn.remove(chosen)
+    generate_words()
+    data = pd.DataFrame(to_learn)
+    data.to_csv('./data/words_to_learn.csv',index=False)
+
+
+
+##--------------------- Generate words -----------------------
 
 def generate_words():
     global chosen
-    chosen = choice(file_dict)
+    chosen = choice(to_learn)
     print(chosen, chosen["French"])
     canvas.itemconfig(language_text, text="Fresh")
     canvas.itemconfig(word_text, text=chosen["French"])
@@ -44,7 +61,7 @@ wrong_button_image=PhotoImage(file="./images/wrong.png")
 w_button = Button(image=wrong_button_image, highlightthickness=0,command=generate_words)
 w_button.grid(row=1,column=0)
 
-r_button = Button(image=right_button_image, highlightthickness=0,command=generate_words)
+r_button = Button(image=right_button_image, highlightthickness=0,command=is_known)
 r_button.grid(row=1,column=1)
 
 language_label = Label(font=('Arial', 40, 'italic'), text='German')
@@ -65,7 +82,7 @@ def original_language():
     canvas.itemconfig(card_image,image= card_back)
     canvas.itemconfig(language_text ,text='English')
     canvas.itemconfig(word_text,text=chosen["English"])
-window.after(1000,generate_words )
+window.after(10,generate_words )
 window.after(5000, original_language)
 
 

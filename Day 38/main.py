@@ -24,9 +24,6 @@ agora_f = agora.strftime("%H:%M:%S")
 print(agora_f)
 
 
-# api_id = "76620e5b"
-# api_key = "a34d0e8a7ad697b149c2697e04432d34"
-
 
 headers = {
     "x-app-id":api_id,
@@ -49,10 +46,6 @@ print(workouts)
 sheety_url = os.environ["SHEETY_ENDPOINT"]
 
 basic = HTTPBasicAuth(f'{USERNAME}',f'{PASSWORD}')
-# basic = HTTPBasicAuth('gabee','Olha1chao')
-# sheety_url = "https://api.sheety.co/52ee36bab0b3226e253c1f8cf7940097/workouts/workouts"
-# sheety_header = {
-# "Authorization": "Basic Z2FiZWU6T2xoYTFjaGFv"}
 
 sheety_header = {
 "Authorization": TOKEN}

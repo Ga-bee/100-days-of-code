@@ -1,8 +1,8 @@
 import requests as rq
 import datetime
 import replace as re
-TOKEN ='7373iaiaoo'
-USERNAME = 'gabee'
+TOKEN = '<token>'
+USERNAME = '<username>'
 GRAPHID = "graph1"
 url = "https://pixe.la/v1/users"
 user_params = {

@@ -3,8 +3,8 @@ import datetime
 from twilio.rest import Client
 import time
 
-account_sid = 'AC2c242e76c2071e86643dab69e967eb01'
-auth_token = '64958d7b7c90be0b6999d1fc62dc65f5 '
+account_sid = '<your_account_sid>'
+auth_token = '<your_auth_token>'
 client = Client(account_sid, auth_token)
 
 
@@ -16,7 +16,7 @@ def print():
     hoje = datetime.datetime.today().date()
     ontem = hoje - datetime.timedelta(days=1)
 
-    api_key= "V2CFUEJ89BK63Y5T"
+    api_key= "your_api_key"
     url_stock = f"https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol={STOCK}&apikey={api_key}"
     url = f"https://www.alphavantage.co/query?function=TIME_SERIES_WEEKLY&symbol=IBM&apikey={api_key}"
     response = rq.get(url_stock)
@@ -35,7 +35,7 @@ def print():
             print(f"""TSLA: 🔻 {int(porcentagem)}%""")
 
 
-    key_news = "f32b21531d144a9c8106fc6af7f46629"
+    key_news = "<your_api_key_news>"
     url_news = f"https://newsapi.org/v2/everything?q={COMPANY_NAME}&from={hoje}&sortBy=popularity&apiKey={key_news}"
     url_news = f"https://newsapi.org/v2/everything?q={COMPANY_NAME}&from={ontem}&sortBy=popularity&apiKey={key_news}"
     response = rq.get(url_news)

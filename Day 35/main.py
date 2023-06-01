@@ -1,18 +1,17 @@
 import requests as rq
 from time import sleep, time
 import datetime
-api_key = "417884a6bb8dcf2e552d399cad04f141"
+api_key = "<your_api_key>"
 lat = "-22.878679"
 lon = "-42.019878"
 appid = api_key
 
-twilio ="Amavaitomarnocu+3fe"
 call = f"https://api.openweathermap.org/data/2.8/onecall?lat={lat}&lon={lon}&appid={appid}"
 funciona= "https://api.openweathermap.org/data/2.8/onecall?lat=-22.878679&lon=-42.019878&appid=417884a6bb8dcf2e552d399cad04f141"
 response = rq.get(call)
 
 response = response.json()
-"https://api.openweathermap.org/data/3.0/onecall?lat=-22.878679&lon=-42.019878&appid=417884a6bb8dcf2e552d399cad04f141"
+
 # students_score = { student: randint(1,100) for student in names}
 
 # passed = {student: nota for student, nota in students_score.items() if nota >= 70}
@@ -26,20 +25,20 @@ response = response.json()
 
 from twilio.rest import Client
 
-account_sid = 'AC2c242e76c2071e86643dab69e967eb01'
-auth_token = '64958d7b7c90be0b6999d1fc62dc65f5 '
+account_sid = '<your_account_sid>'
+auth_token = '<your_auth_token>'
 client = Client(account_sid, auth_token)
 sleep(1)
 message = client.messages.create(
   from_='whatsapp:+14155238886',
   body=f'Fala gostosa!\n Oh vamo ver a previsão pras próximas 12 horas?\n',
-  to='whatsapp:+5522988277221'
+  to='whatsapp:+55yournumber'
 )
 sleep(1)
 message = client.messages.create(
   from_='whatsapp:+14155238886',
   body=f'Computando......\n',
-  to='whatsapp:+5522988277221'
+  to='whatsapp:+55yournumber'
 )
 sleep(1)
 weather_slice = response["hourly"][:12]
@@ -51,13 +50,13 @@ for hour_data in weather_slice:
         message = client.messages.create(
         from_='whatsapp:+14155238886',
         body=f'{datetime.datetime.fromtimestamp(hour_data["dt"]).time().isoformat()}: Vai chover! Leve Guarda chuva\n',
-        to='whatsapp:+5522988277221')
+        to='whatsapp:+55yournumber')
         print(message.sid)
     else:
         message = client.messages.create(
         from_='whatsapp:+14155238886',
         body=f'{datetime.datetime.fromtimestamp(hour_data["dt"]).time().isoformat()}:Não vai chover! Não precisa levar guarda chuva\n',
-        to='whatsapp:+5522988277221')
+        to='whatsapp:+55yournumber')
         print(message.sid)
 
 #         print('')

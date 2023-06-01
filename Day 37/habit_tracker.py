@@ -20,7 +20,7 @@ user_params = {
 graph_endpoint = f"{url}/{USERNAME}/graphs"
 
 graph_param = {
-    "X-USER-TOKEN":"7373iaiaoo"
+    "X-USER-TOKEN":"<>"
 }
 
 graph_config ={
